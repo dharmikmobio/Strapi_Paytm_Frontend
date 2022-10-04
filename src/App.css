@@ -1,7 +1,76 @@
+@import 'antd/dist/antd.css';
+
+.qr {
+  width: 30%;
+  color: rgb(0, 217, 255);
+  height: 250px;
+  background: rgb(20, 20, 11);
+
+}
+
+.otps {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.bbtn {
+  float: right;
+}
+
 .App {
   text-align: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  padding: 100px;
+}
+
+.ant-form-horizontal {
+  max-width: 100% !important;
+}
+
+.ant-col-8 {
+  display: block !important;
+  flex: 0 0 23.333333% !important;
+  max-width: 33.33333333% !important;
+}
+
+.ant-col {
+  width: 23% !important;
+}
+
+.innput {
+  width: 85% !important;
+}
+
+.con {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+.bcontrol{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+/* .ant-form-item-label > label {
+  width: 500px!important;
+} */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -10,6 +79,34 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media (max-width: 575px){
+
+  .ant-form-item .ant-form-item-label > label {
+      margin: 0;
+      width: 250px;
+  }
+  .ant-form-item-control-input-content {
+    flex: auto;
+    max-width: 70%;
+    margin-top: 10px;
+    display: flex;
+    /* flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end; */
+  }
+  .ant-form-item{
+    display: flex!important;
+    align-content: flex-start!important;
+  }
+  .ant-row{
+    display: flex;
+    align-items: center;
+    
+  }
+  .card-body{
+    width: 450px;
   }
 }
 
@@ -32,7 +129,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    margin: 0px !important;
+  }
+
+  .card-body {
+    width: 100% !important;
+  }
+
 }
