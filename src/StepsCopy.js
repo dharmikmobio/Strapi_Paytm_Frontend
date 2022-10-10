@@ -28,6 +28,8 @@ export default function StepsCopy() {
     const [numbers, setNumber] = useState("")
     const [amount, setAmount] = useState("")
     const [name, setName] = useState("")
+    const [address, setAddress] = useState("")
+    const [panc, setPanC] = useState("")
     // const handleChange = (code) => setCode(code);
     // const [loadings, setLoadings] = useState([]);
 
@@ -246,8 +248,8 @@ export default function StepsCopy() {
         // console.log(content.body);
         // onScriptLoad();
         // console.log("thsi is run orderId :", orderid)
-        // console.log('amount', amount)
-        // console.log('a', a)
+        console.log('amount', amount)
+        console.log('a', a)
         var config = {
             "root": "",
             "flow": "DEFAULT",
@@ -293,10 +295,12 @@ export default function StepsCopy() {
                 setA(amount);
                 setA(email);
                 setA(numbers);
+                setA(panc);
+                setA(address);
                 setA(name);
                 setA(code);
-                console.log(";;;;")
-                console.log(setA(code));
+                // console.log(";;;;")
+                // console.log(setA(code));
                 // console.log('code', setA(code))
                 // await new Promise(r => setTimeout(r, 1000));
                 return 'ok';
@@ -341,19 +345,39 @@ export default function StepsCopy() {
             <Form.Item label="Email" name="email">
                 <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
             </Form.Item>
-            <Form.Item label="Phone Number" name="phone"
-             rules={[
+            <Form.Item label="Address" name="address">
+                <Input placeholder="Address" onChange={(e) => setAddress(e.target.value)} />
+            </Form.Item>
+            <Form.Item label="Pan Card" name="pancard">
+                <Input placeholder="Pan Card" onChange={(e) => setPanC(e.target.value)} />
+            </Form.Item>
+            <Form.Item label="Phone Number" name="Phone Number" type="number" maxLength={10}
+             validateTrigger="onBlur"
+             hasFeedback
+              rules={[
                 {
                     required: true,
-                    // max: 10,
-                    type: 'number',
-                    // pattern: /^(?:\d*)$/,
-                    // message: "Value should be less than 10 character",
                 },
+                () => ({
+                    validator(_, value) {
+                      if (!value) {
+                        return Promise.reject();
+                      }
+                      if (isNaN(value)) {
+                        return Promise.reject("Please input only 10 Digit number");
+                      }
+                      if (value.length < 10) {
+                        return Promise.reject("Phone Number can't be less than 10 digits");
+                      }
+                      if (value.length > 10) {
+                        return Promise.reject("Phone Number can't be more than 10    digits");
+                      }
+                      return Promise.resolve();
+                    },
+                  }),
             ]}
-            
             >
-                <Input placeholder="Phone Number" onChange={(e) => setNumber(e.target.value)} />
+                <Input placeholder="Phone Number"  type="number" maxLength={10} onChange={(e) => setNumber(e.target.value)} />
             </Form.Item>
 
             <Form.Item {...tailLayout}>

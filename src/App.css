@@ -71,6 +71,9 @@
 /* .ant-form-item-label > label {
   width: 500px!important;
 } */
+.ant-steps-vertical {
+  margin-left: 40px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -85,7 +88,7 @@
 
   .ant-form-item .ant-form-item-label > label {
       margin: 0;
-      width: 250px;
+      width: 300px;
   }
   .ant-form-item-control-input-content {
     flex: auto;
