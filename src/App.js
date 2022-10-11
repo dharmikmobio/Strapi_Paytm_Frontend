@@ -1,7 +1,7 @@
 
 import './App.css';
 // import Steps from './Steps';
-import StepsCopy from './StepsCopy.js';
+import StepsCopy from './StepsInputs';
 
 function App() {
   return (

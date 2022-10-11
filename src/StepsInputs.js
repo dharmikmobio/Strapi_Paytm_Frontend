@@ -19,10 +19,10 @@ export default function StepsCopy() {
     <Helmet>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
     </Helmet>
-    // console.log('PROPS:::', props)
+
     const [a, setA] = useState("");
     const [loading, setLoading] = useState(false)
-    // const [b, setB] = useState("")
+
     const [email, setEmail] = useState("")
     const [code, setCode] = useState("")
     const [numbers, setNumber] = useState("")
@@ -30,16 +30,11 @@ export default function StepsCopy() {
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [panc, setPanC] = useState("")
-    // const handleChange = (code) => setCode(code);
-    // const [loadings, setLoadings] = useState([]);
 
 
     const subbmitdata = async () => {
         setLoading(true);
 
-        // const orderid = "OID55ID" + Math.floor(10000000000 * Math.random())
-        // const custid = "CUST" + Math.floor(1000000000000 * Math.random())
-        // setOrderId(orderid);
         const rawResponse = await fetch(`${process.env.REACT_APP_DEV_MODE}/api/otp`, {
             method: 'POST',
             headers: {
@@ -51,69 +46,26 @@ export default function StepsCopy() {
                     
                     number: numbers
                 }
-                // email: email,
-                // code: amount
-                // orderid: orderid, amount: a, custid: custid
-                //   , name: name ,email: email , number: number, amount: amount
+   
             })
         });
-        // console.log('${process.env.REACT_APP_DEV_MODE}', process.env.REACT_APP_DEV_MODE)
-        // console.log('numbers:::::', numbers)
-        // console.log(rawResponse, "json")
+    
         setLoading(false);
 
         if (rawResponse.status === 200) {
             success(); 
             gotoStep(current + 1);
-            // console.log("error1",rawResponse.error)
+            
         }else{
             errorotp();
-            // console.log("errror",rawResponse.error)
+           
         }
-        // success();
-        // setB(rawResponse.url)
-
-        // console.log('::::::::', setA("")) 
-        // console.log("rawResponse::::: ",a)
-        // const content = await rawResponse.json();
-        // console.log("Content >>>>> ",content)
-        // setToken(content.body.txnToken);
-
-        // localStorage.setItem('token', content.body.txnToken);
-        // console.log("thsi is run :", a)
-        // console.log(content.body);
-        // onScriptLoad();
-        // console.log("thsi is run orderId :", orderid)
-        // var config = {
-        //     "root": "",
-        //     "flow": "DEFAULT",
-        //     "data": {
-        //         "orderId": orderid, /* update order id */
-        //         "token": content.body.txnToken, /* update token value */
-        //         "tokenType": "TXN_TOKEN",
-        //         "amount": a /* update amount */
-        //     },
-        //     "handler": {
-        //         "notifyMerchant": function (eventName, data) {
-        //             console.log("notifyMerchant handler function called");
-        //             console.log("eventName => ", eventName);
-        //             console.log("data => ", data);
-        //         }
-        //     }
-        // };
-        // console.log("window.Paytm", window.Paytm.CheckoutJS)
-        // if (window.Paytm && window.Paytm.CheckoutJS) {
-        //     window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-        //         window.Paytm.CheckoutJS.invoke();
-        //     }).catch(function onError(error) {
-        //         console.log("errors => ", error);
-        //     });
-        // }
+       
     }
 
     const submitOTP = async () => {
 
-        // console.log('code', code)
+     
         setLoading(true);
         const rawResponse = await fetch(`${process.env.REACT_APP_DEV_MODE}/api/otp-verify`, {
             method: 'POST',
@@ -128,19 +80,14 @@ export default function StepsCopy() {
                     number: numbers,
                     otp: code
                 }
-                // orderid: orderid, amount: a, custid: custid
-                //   , name: name ,email: email , number: number, amount: amount
+          
             })
         });
-        // console.log('numbers:::::', numbers)
-        // console.log('numbers:::::', code)
-        // console.log(rawResponse.data, "json")
+
 
         setLoading(false);
         const get = await rawResponse.json();
-        // console.log('numbers:::::', numbers)
-        // console.log(get, "json")
-        // console.log(get.status, "json111")
+ 
 
         if (get.status === "approved") {
              successotp(); 
@@ -148,57 +95,11 @@ export default function StepsCopy() {
         }else{
             errorotp();
         }
-        // if (rawResponse.Response.status === "approved") {
-        //     console.log('first', rawResponse.Response.status)
-        //      successotp(); 
-        //      gotoStep(current + 1);
-        // }else{
-        //     errorotp();
-        // }
-        // successotp();
-        // setB(rawResponse.url)
-
-        // console.log('::::::::', setA("")) 
-        // console.log("rawResponse::::: ",a)
-        // const content = await rawResponse.json();
-        // console.log("Content >>>>> ",content)
-        // setToken(content.body.txnToken);
-
-        // localStorage.setItem('token', content.body.txnToken);
-        // console.log("thsi is run :", a)
-        // console.log(content.body);
-        // onScriptLoad();
-        // console.log("thsi is run orderId :", orderid)
-        // var config = {
-        //     "root": "",
-        //     "flow": "DEFAULT",
-        //     "data": {
-        //         "orderId": orderid, /* update order id */
-        //         "token": content.body.txnToken, /* update token value */
-        //         "tokenType": "TXN_TOKEN",
-        //         "amount": a /* update amount */
-        //     },
-        //     "handler": {
-        //         "notifyMerchant": function (eventName, data) {
-        //             console.log("notifyMerchant handler function called");
-        //             console.log("eventName => ", eventName);
-        //             console.log("data => ", data);
-        //         }
-        //     }
-        // };
-        // console.log("window.Paytm", window.Paytm.CheckoutJS)
-        // if (window.Paytm && window.Paytm.CheckoutJS) {
-        //     window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-        //         window.Paytm.CheckoutJS.invoke();
-        //     }).catch(function onError(error) {
-        //         console.log("errors => ", error);
-        //     });
-        // }
+ 
     }
 
     const CompleteSubmit = async () => {
 
-        // console.log('code', code)
         const orderid = "OID55ID" + Math.floor(10000000000 * Math.random())
         const custid = "CUST" + Math.floor(1000000000000 * Math.random())
         setLoading(true);
@@ -209,7 +110,7 @@ export default function StepsCopy() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // email: email,
+
                 data:{
 
                     // number: numbers,
@@ -218,36 +119,17 @@ export default function StepsCopy() {
                      amount: amount,
                     custid: custid
                 }
-                //   , name: name ,email: email , number: number, amount: amount
+          
             })
         });
         const content = await rawResponse.json();
-        // console.log('numbers:::::', numbers)
-        // console.log('amountamountamount:::::', amount)
-        // console.log(rawResponse.data, "json")
+
 
         setLoading(false);
 
-        // if (rawResponse.status === 200) {
-        //     success(); 
-        //      gotoStep(current + 1);
-        // }else{
-        //     errorotp();
-        // }
-
-        // setB(rawResponse.url)
-
-        // console.log('::::::::', setA("")) 
-        // console.log("rawResponse::::: ",a)
-        // const content = await rawResponse.json();
-        // console.log("Content >>>>> ",content)
-        // setToken(content.body.txnToken);
 
         localStorage.setItem('token', content.body.txnToken);
-        // console.log("thsi is run :", a)
-        // console.log(content.body);
-        // onScriptLoad();
-        // console.log("thsi is run orderId :", orderid)
+  
         console.log('amount', amount)
         console.log('a', a)
         var config = {
@@ -299,16 +181,11 @@ export default function StepsCopy() {
                 setA(address);
                 setA(name);
                 setA(code);
-                // console.log(";;;;")
-                // console.log(setA(code));
-                // console.log('code', setA(code))
-                // await new Promise(r => setTimeout(r, 1000));
+   
                 return 'ok';
             } else {
                 return null
-                // await new Promise(r => setTimeout(r, 1000));
-
-                // return 'ok';
+   
             }
 
         },
@@ -478,22 +355,16 @@ export default function StepsCopy() {
             </div>
         </>,
     ];
-    // console.log('rawresponce', b)
-    // const base64String = btoa(String.fromCharCode(...new Uint8Array(b)));
+
     return (
         <>
             <div className="application">
                 <Helmet>
-                    {/* <script src="https://use.typekit.net/foobar.js"></script> */}
-                    {/* <script>try{Typekit.load({ async: true });}catch(e){}</script> */}
+                
                     <script id="Paytm" type="application/javascript"
                         src={`https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/duMLWy61727696528884.js`}
                         crossorigin="anonymous" data-react-helmet="true"></script>
 
-                    {/* <script id="Paytm" type="application/javascript"
-    src={`securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/${token}.js`}
-
-    crossorigin="anonymous"></script> */}
                 </Helmet>
 
             </div>
